@@ -38,6 +38,14 @@
         </plugins>
     </build>
 
+    <repositories>
+        <!--  used for importing java projects from github -->
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -50,12 +58,12 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- This is a somewhat temporary hack to get jitpack to build -->
         <dependency>
-            <groupId>com.zenika</groupId>
-            <artifactId>snapshot-matcher</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>com.github.conveyal</groupId>
+            <artifactId>java-snapshot-matcher</artifactId>
+            <version>c49ea00559a391241e0e2a2fc9829f571fb9c2ef</version>
         </dependency>
-
     </dependencies>
 
 </project>

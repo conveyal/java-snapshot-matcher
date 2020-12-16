@@ -8,9 +8,14 @@ matrix:
     - name: "Java 1.8 on Windows"
       os: windows           # Windows 10.0.17134 N/A Build 17134
       language: shell       # 'language: java' is an error on Travis CI Windows
-      install:
-        # Install java/maven
+      before_install:
+        # Install java
         - sh windows-install-java.sh
+        # Install maven (using choco doesn't work so well).
+        - wget https://archive.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.zip
+        - unzip -qq apache-maven-3.3.9-bin.zip
+        - export M2_HOME=$PWD/apache-maven-3.3.9
+        - export PATH=$M2_HOME/bin:$PATH
 script:
   - cd snapshot-matcher
   - mvn install

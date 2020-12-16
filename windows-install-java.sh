@@ -5,5 +5,6 @@ echo $PATH
 # Install java and maven
 choco install jdk8 -params 'installdir=c:\\jdk' -y
 choco install maven -y
-# Call choco's RefreshEnv so that new environment variable is recognized.
-C:\ProgramData\chocolatey\bin\RefreshEnv
+# Call RefreshEnv so that environment variable updates are recognized.
+# https://travis-ci.community/t/install-location-for-iisexpress/2902/2?u=landonreed
+cmd.exe //c "RefreshEnv.cmd & iisexpress.exe"

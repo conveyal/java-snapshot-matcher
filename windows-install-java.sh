@@ -6,4 +6,4 @@ echo $PATH
 choco install jdk8 -params 'installdir=c:\\jdk' -y
 java -version
 choco install maven -y
-mvn --version
+C:\ProgramData\chocolatey\lib\maven\bin\mvn --version

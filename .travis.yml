@@ -1,0 +1,10 @@
+dist: trusty # jdk 8 not available on xenial
+language: java
+java:
+  - oraclejdk8
+os:
+  - linux
+  - windows
+script:
+  # Package app and run unit tests.
+  - mvn package

@@ -8,7 +8,7 @@ matrix:
     - name: "Java 1.8 on Windows"
       os: windows           # Windows 10.0.17134 N/A Build 17134
       language: shell       # 'language: java' is an error on Travis CI Windows
-      before_install:
+      install:
         # Install java/maven
         - sh windows-install-java.sh
 script:

@@ -10,13 +10,16 @@ matrix:
       language: shell       # 'language: java' is an error on Travis CI Windows
       before_install:
         # Install java
-        - sh windows-install-java.sh
+        - export JAVA_HOME=${JAVA_HOME:-/c/jdk}
+        - export PATH=${JAVA_HOME}/bin:${PATH}
+        - choco install jdk8 -params 'installdir=c:\\jdk' -y
         # Install maven (using choco doesn't work so well).
         - wget https://archive.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.zip
         - unzip -qq apache-maven-3.3.9-bin.zip
         - export M2_HOME=$PWD/apache-maven-3.3.9
         - export PATH=$M2_HOME/bin:$PATH
 script:
+  - echo $PATH
   - cd snapshot-matcher
   - mvn install
   - cd ../snapshot-matcher-example

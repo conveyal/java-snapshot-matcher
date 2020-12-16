@@ -1,10 +1,12 @@
-dist: trusty # jdk 8 not available on xenial
-language: java
-java:
-  - oraclejdk8
-os:
-  - linux
-  - windows
-script:
-  # Package app and run unit tests.
-  - mvn package
+matrix:
+  include:
+    - name: "Java 1.8 on Xenial Linux"
+      os: linux
+      language: java        # this works for Linux but is an error on Windows
+      dist: trusty          # jdk 8 not available on the xenial linux distro
+      java: oraclejdk8
+    - name: "Java 1.8 on Windows"
+      os: windows           # Windows 10.0.17134 N/A Build 17134
+      language: shell       # 'language: java' is an error on Travis CI Windows
+      before_install: sh windows-install-java.sh
+script: mvn package

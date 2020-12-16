@@ -1,6 +1,6 @@
 matrix:
   include:
-    - name: "Java 1.8 on Xenial Linux"
+    - name: "Java 1.8 on Trusty Linux"
       os: linux
       language: java        # this works for Linux but is an error on Windows
       dist: trusty          # jdk 8 not available on the xenial linux distro
@@ -9,4 +9,8 @@ matrix:
       os: windows           # Windows 10.0.17134 N/A Build 17134
       language: shell       # 'language: java' is an error on Travis CI Windows
       before_install: sh windows-install-java.sh
-script: mvn package
+script:
+  - cd snapshot-matcher
+  - mvn install
+  - cd ../snapshot-matcher-example
+  - mvn install

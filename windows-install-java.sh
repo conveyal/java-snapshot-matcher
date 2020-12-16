@@ -4,6 +4,6 @@ export PATH=${MAVEN_HOME}/bin:${JAVA_HOME}/bin:${PATH}
 echo $PATH
 # Install java and maven
 choco install jdk8 -params 'installdir=c:\\jdk' -y
-java -version
 choco install maven -y
-C:\ProgramData\chocolatey\lib\maven\bin\mvn --version
+# Call choco's RefreshEnv so that new environment variable is recognized.
+C:\ProgramData\chocolatey\bin\RefreshEnv
